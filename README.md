@@ -1,6 +1,6 @@
 # Council review
 
-A Cursor skill that reviews documentation and tests. Three models read the same packet, a clerk checks factual quotes against the repository, and a chair writes one memo. The council does not edit files.
+A Cursor skill that reviews documentation and tests. Three models read the same packet. The clerk checks that each quote is an exact substring of the packet, then opens the cited files to confirm factual claims. A chair writes one memo. The council does not edit files.
 
 This repository is private. It is not part of SessionLens.
 
@@ -30,7 +30,7 @@ The skill loads only when you name it. It does not start on its own.
 
 ## What you get
 
-A memo with must-fix items, single-model facts to look at, agreed recommendations, disputes with both sides, and dropped claims. You decide what to change. Snapshot updates stay a separate decision.
+A memo with must-fix items, single-model facts to look at, agreed recommendations, disputes with both sides, dropped claims, open items, and the seats that answered. The chair does not run when fewer than two seats return findings. You decide what to change. Snapshot updates stay a separate decision.
 
 ## Quote check
 
