@@ -39,6 +39,10 @@ A memo with must-fix items, single-model facts to look at, agreed recommendation
 ## Quote check
 
 ```bash
-node .cursor/skills/council-review/scripts/check-quotes.mjs packet.txt findings.md
-node --test .cursor/skills/council-review/scripts/check-quotes.test.mjs
+node .cursor/skills/council-review/scripts/check-quotes.mjs packet.txt findings.md docs
+node --test .cursor/skills/council-review/scripts/*.test.mjs
 ```
+
+A finding is kept only when its quote is an exact substring of the packet, its `rubric` id matches the lane, its fields are filled in, and any file path in `where` appears in the packet.
+
+The memo is saved outside the repo, in `~/.local/share/council-review/`, with the date, commit, and file list. It is not committed.

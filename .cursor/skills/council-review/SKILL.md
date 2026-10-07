@@ -38,7 +38,7 @@ Each reviewer returns finding blocks. Numbering restarts per seat. Keep the seat
 
 ## Grounding
 
-Run `scripts/check-quotes.mjs` with the packet and a file of the finding blocks. Drop every finding whose `quoteInPacket` is false before clustering.
+Run `scripts/check-quotes.mjs` with the packet, a file of the finding blocks, and the lane (`docs` or `tests`). Drop every finding whose `ok` is not true before clustering.
 
 Cluster what remains by path plus overlapping quote, not by the reviewer's F numbers. Different severity inside a cluster is a dispute.
 
@@ -66,4 +66,6 @@ Pass the clusters, grounding, and votes to `council-chair`. Apply this table and
 
 A changed snapshot is listed under Snapshots, not as a must-fix.
 
-After the memo, stop.
+After the memo, run `scripts/save-memo.mjs` with the reviewed repo root, the memo text, and a line per reviewed file. The script writes outside the repo, under `~/.local/share/council-review/`, and prints the path. Tell the user that path. Do not commit the memo.
+
+After the memo is saved, stop.
