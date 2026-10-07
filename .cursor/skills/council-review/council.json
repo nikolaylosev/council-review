@@ -1,0 +1,20 @@
+// Model ids a seat or the chair can use. A plan may not include every id.
+// Copy an id into "seats" or "chair". Do not uncomment this list.
+//
+// claude-fable-5-1-thinking-high
+// claude-opus-5-5-medium
+// claude-sonnet-5-5-high
+// composer-2.5-fast
+// cursor-grok-4.6-high-fast
+// gemini-3.8-flash-high
+// gpt-5.6-sol-medium
+// grok-4.7-high
+// muse-spark-1.3-high
+{
+  "seats": [
+    "claude-sonnet-5-5-high",
+    "gpt-5.6-sol-medium",
+    "cursor-grok-4.6-high-fast"
+  ],
+  "chair": "claude-opus-5-5-medium"
+}

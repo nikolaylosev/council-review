@@ -1,6 +1,6 @@
 ---
 name: council-review
-description: Runs a three-model council over documentation or tests and returns one memo. Use only when the user asks for a council review, an LLM council, or a council review of docs or tests.
+description: Runs a council over documentation or tests and returns one memo. Use only when the user asks for a council review, an LLM council, or a council review of docs or tests.
 disable-model-invocation: true
 ---
 
@@ -8,19 +8,15 @@ disable-model-invocation: true
 
 You are the clerk. You have no opinion about the findings. You do not edit the project. You do not commit.
 
-Read [rubrics.md](rubrics.md) and copy the matching rubric into the reviewer prompt.
+Read [council.json](council.json) and [rubrics.md](rubrics.md). Copy the matching rubric into the reviewer prompt.
 
 ## Seats
 
-Launch `council-reviewer` three times in one message, each with the full packet. Pass a different `model` on each call:
+Lines that start with `//` are comments. Ignore them. `seats` is the reviewer list. `chair` is the model that writes the memo. Launch one `council-reviewer` per seat, all in one message, each with the full packet. Pass that seat's model on the call.
 
-1. `claude-sonnet-5-5-high`
-2. `gpt-5.6-sol-medium`
-3. `gemini-3.8-flash-high`
+If `seats` has fewer than two entries, or `chair` is empty, stop and say so. If a slug is rejected, drop that seat and record the error. Do not replace it with your own model. If fewer than two seats return findings, stop. Do not call the chair.
 
-If a slug is rejected, drop that seat and record the error. Do not replace it with your own model. If fewer than two seats return findings, stop. Do not call the chair.
-
-The chair is a fresh `council-chair` call, never a resumed reviewer.
+The chair is a fresh `council-chair` call. Pass the `chair` model on that call. Never resume a reviewer.
 
 ## Packet
 
@@ -52,7 +48,7 @@ For `kind: fact`, and for `kind: gap` that points at a file, open that file and 
 
 Run this only for a cluster that one seat raised, or whose severity differs. Skip agreed clusters.
 
-Label the seats A, B, and C. Strip model names. Launch three fresh `council-reviewer` calls in one message, same model slugs as stage 1, not resumes. The prompt contains only the disputed clusters and asks for `agree`, `disagree`, or `unsure` plus one sentence. Tell each seat not to assume which cluster it wrote.
+Label the seats A, B, C, and so on, in `council.json` order. Strip model names. Launch one fresh `council-reviewer` per seat that returned findings, in one message, using the same model slugs as stage 1, not resumes. The prompt contains only the disputed clusters and asks for `agree`, `disagree`, or `unsure` plus one sentence. Tell each seat not to assume which cluster it wrote.
 
 ## Memo
 
@@ -60,7 +56,7 @@ Pass the clusters, grounding, and votes to `council-chair`. Apply this table and
 
 | Kind | Grounding | Seats | Section |
 |---|---|---|---|
-| fact | confirmed | 2 or 3 | Must-fix |
+| fact | confirmed | 2 or more | Must-fix |
 | fact | confirmed | 1 | Look at |
 | fact | refuted | any | Dropped |
 | fact | unverified | any | Open |
