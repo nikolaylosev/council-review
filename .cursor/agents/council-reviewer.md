@@ -24,6 +24,7 @@ Emit only finding blocks, then stop:
 id: F1
 severity: high
 kind: fact
+rubric: D1
 where: path:line or a section heading
 claim: one sentence
 quote: |
@@ -34,4 +35,6 @@ suggestion: one sentence
 
 `severity` is `high`, `medium`, or `low`.
 `kind` is `fact` (a claim you can check against code or another doc), `judgment` (a quality opinion), or `gap` (something missing).
+`rubric` is the id from the rubric in this prompt, such as `D1` or `T3`.
 The `quote` body is indented by two spaces. Copy it from the packet without rewriting.
+If `where` names a file, copy that path from the packet.
