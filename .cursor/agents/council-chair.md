@@ -1,7 +1,7 @@
 ---
 name: council-chair
 description: Writes the council memo from clustered findings, grounding, and votes. Use only when the council-review skill launches the chair.
-model: claude-opus-5-5-medium
+model: inherit
 readonly: true
 ---
 

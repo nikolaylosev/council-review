@@ -1,6 +1,6 @@
 # Council review
 
-A Cursor skill that reviews documentation and tests. Three models read the same packet. The clerk checks that each quote is an exact substring of the packet, then opens the cited files to confirm factual claims. A chair writes one memo. The council does not edit files.
+A Cursor skill that reviews documentation and tests. The models named in `council.json` read the same packet. The clerk checks that each quote is an exact substring of the packet, then opens the cited files to confirm factual claims. The chair named in that file writes one memo. The council does not edit files.
 
 This repository is private. It is not part of SessionLens.
 
@@ -27,6 +27,10 @@ council review the current diff
 ```
 
 The skill loads only when you name it. It does not start on its own.
+
+## Seats and chair
+
+Edit [`.cursor/skills/council-review/council.json`](.cursor/skills/council-review/council.json). `seats` lists the reviewer models, in the order they are labeled A, B, C. `chair` is the model that writes the memo. One reviewer is launched per seat. A rejected model is dropped and is not replaced by the clerk's own model.
 
 ## What you get
 
