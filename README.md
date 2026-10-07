@@ -2,7 +2,7 @@
 
 A Cursor skill that reviews documentation and tests. The models named in `council.json` read the same packet. The clerk checks that each quote is an exact substring of the packet, then opens the cited files to confirm factual claims. The chair named in that file writes one memo. The council does not edit files.
 
-This repository is private. It is not part of SessionLens.
+How a run is put together is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). The three-stage shape follows [llm-council](https://github.com/karpathy/llm-council). Here the unit is a finding about docs or tests, checked against the repository.
 
 ## Install into a project
 
@@ -26,7 +26,7 @@ council review docs/ARCHITECTURE.md
 council review the current diff
 ```
 
-The skill loads only when you name it. It does not start on its own.
+The skill loads only when you name it. It does not start on its own. Paths are from that project's root. `the current diff` means its uncommitted changes. The memo is still saved in `~/.local/share/council-review/` on your machine, not in the project.
 
 ## Seats and chair
 
